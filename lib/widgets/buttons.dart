@@ -27,56 +27,53 @@ class AnimatedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IgnorePointer(
-      ignoring: isLoading,
-      child: InkWell(
-        splashColor: Colors.transparent,
-        highlightColor: Colors.transparent,
-        onTap: onTap,
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 700),
-          curve: Curves.fastOutSlowIn,
-          height: height ?? 44.h,
-          width: isLoading
-              ? switch (loadingWidth == null) {
-                  true => 44.w,
-                  false => loadingWidth,
-                }
-              : switch (width == null) {
-                  true => 327.w,
-                  false => width,
-                },
-          decoration: BoxDecoration(
-              color: color ?? neutralWhite,
-              borderRadius: BorderRadius.circular(
-                isLoading
+    return InkWell(
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 700),
+        curve: Curves.fastOutSlowIn,
+        height: height ?? 44.h,
+        width: isLoading
+            ? switch (loadingWidth == null) {
+                true => 44.w,
+                false => loadingWidth,
+              }
+            : switch (width == null) {
+                true => 327.w,
+                false => width,
+              },
+        decoration: BoxDecoration(
+            color: color ?? neutralWhite,
+            borderRadius: BorderRadius.circular(
+              isLoading
+                  ? switch (loadingWidth == null) {
+                      true => 44.w,
+                      false => loadingWidth!,
+                    }
+                  : switch (width == null) {
+                      true => 20.r,
+                      false => 20.r,
+                    },
+            ),
+            border: border),
+        child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: SizedBox(
+                width: isLoading
                     ? switch (loadingWidth == null) {
                         true => 44.w,
-                        false => loadingWidth!,
+                        false => loadingWidth,
                       }
                     : switch (width == null) {
-                        true => 20.r,
-                        false => 20.r,
+                        true => 327.w,
+                        false => width,
                       },
-              ),
-              border: border),
-          child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: SizedBox(
-                  width: isLoading
-                      ? switch (loadingWidth == null) {
-                          true => 44.w,
-                          false => loadingWidth,
-                        }
-                      : switch (width == null) {
-                          true => 327.w,
-                          false => width,
-                        },
-                  child: Center(
-                      child: isLoading
-                          ? const Icon(Icons.arrow_forward_ios_rounded)
-                          : content))),
-        ),
+                child: Center(
+                    child: isLoading
+                        ? const Icon(Icons.arrow_forward_ios_rounded)
+                        : content))),
       ),
     );
   }
