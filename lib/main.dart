@@ -1,4 +1,4 @@
-import 'package:check_dc/app/onboarding/views/onbosrding_view1.dart';
+import 'package:check_dc/app/onboarding/views/onbosrding_base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
               useMaterial3: true,
             ),
-            home: const OnboardingView1(),
+            home: const OnboardingBaseView(),
           );
         });
   }

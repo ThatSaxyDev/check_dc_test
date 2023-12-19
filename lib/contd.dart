@@ -96,12 +96,6 @@ extension WidgetExtensions on num {
 }
 
 //! EXTENSIONS ON STRING
-extension ImagePath on String {
-  String get png => 'lib/assets/images/$this.png';
-  String get jpg => 'lib/assets/images/$this.jpg';
-  String get gif => 'lib/assets/images/$this.gif';
-}
-
-extension VectorPath on String {
-  String get svg => 'lib/assets/vectors/$this.svg';
+extension LottiePath on String {
+  String get lottie => 'lib/assets/lottie/$this.json';
 }

@@ -57,7 +57,7 @@ class OnboardingText extends StatelessWidget {
                           color: green,
                           fontSize: 45.sp,
                           fontWeight: FontWeight.w300,
-                          height: 1,
+                          height: 1.2,
                         ),
                       ),
                     ],

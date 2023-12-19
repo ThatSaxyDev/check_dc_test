@@ -34,14 +34,22 @@ class AnimatedButton extends StatelessWidget {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 700),
         curve: Curves.fastOutSlowIn,
-        height: height ?? 44.h,
+        height: isLoading
+            ? switch (loadingWidth == null) {
+                true => 50.w,
+                false => loadingWidth,
+              }
+            : switch (width == null) {
+                true => 65.w,
+                false => height,
+              },
         width: isLoading
             ? switch (loadingWidth == null) {
                 true => 44.w,
                 false => loadingWidth,
               }
             : switch (width == null) {
-                true => 327.w,
+                true => 169.w,
                 false => width,
               },
         decoration: BoxDecoration(
@@ -53,8 +61,8 @@ class AnimatedButton extends StatelessWidget {
                       false => loadingWidth!,
                     }
                   : switch (width == null) {
-                      true => 20.r,
-                      false => 20.r,
+                      true => 30.r,
+                      false => 30.r,
                     },
             ),
             border: border),
@@ -63,11 +71,11 @@ class AnimatedButton extends StatelessWidget {
             child: SizedBox(
                 width: isLoading
                     ? switch (loadingWidth == null) {
-                        true => 44.w,
+                        true => 65.w,
                         false => loadingWidth,
                       }
                     : switch (width == null) {
-                        true => 327.w,
+                        true => 169.w,
                         false => width,
                       },
                 child: Center(

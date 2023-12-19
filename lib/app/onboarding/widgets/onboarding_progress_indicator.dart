@@ -95,7 +95,8 @@ class _OnboardingProgressIndicatorState
                         color: lightGreen,
                       ),
                       AnimatedContainer(
-                        duration: const Duration(milliseconds: 2000),
+                        duration:
+                            Duration(milliseconds: widget.duration ?? 2000),
                         width: widget.pageIndex.value == index ? 61.5.w : 0,
                         height: 7.h,
                         color: green,

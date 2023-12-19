@@ -1,21 +1,24 @@
 import 'dart:async';
 
+import 'package:check_dc/app/auth/views/sign_up_view.dart';
+import 'package:check_dc/app/onboarding/views/view_1.dart';
 import 'package:check_dc/app/onboarding/widgets/onboarding_text.dart';
-import 'package:check_dc/app/onboarding/widgets/signup_progress_indicator.dart';
+import 'package:check_dc/app/onboarding/widgets/onboarding_progress_indicator.dart';
 import 'package:check_dc/contd.dart';
 import 'package:check_dc/palette/palette.dart';
 import 'package:check_dc/widgets/buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lottie/lottie.dart';
 
-class OnboardingView1 extends StatefulWidget {
-  const OnboardingView1({super.key});
+class OnboardingBaseView extends StatefulWidget {
+  const OnboardingBaseView({super.key});
 
   @override
-  State<OnboardingView1> createState() => _OnboardingView1State();
+  State<OnboardingBaseView> createState() => _OnboardingBaseViewState();
 }
 
-class _OnboardingView1State extends State<OnboardingView1> {
+class _OnboardingBaseViewState extends State<OnboardingBaseView> {
   ValueNotifier<bool> canAnimate = false.notifier;
   ValueNotifier<int> target = 0.notifier;
   ValueNotifier<int> duration = 2000.notifier;
@@ -57,24 +60,24 @@ class _OnboardingView1State extends State<OnboardingView1> {
                 onPageChanged: (value) => pageIndex.value = value,
                 itemCount: 5,
                 pageSnapping: true,
-                itemBuilder: (context, index) {
-                  return Container(
-                    color: switch (index) {
-                      0 => Colors.red,
-                      1 => Colors.blue,
-                      2 => Colors.yellow,
-                      3 => Colors.amber,
-                      _ => Colors.green,
-                    },
-                  );
-                },
+                itemBuilder: (context, index) => View1(
+                  backgroundViewController: backgroundViewController,
+                  textViewController: textViewController,
+                  lottie: '${index + 1}',
+                  pageIndex: pageIndex,
+                ),
+                // Lottie.asset(
+                //   ('${index + 1}').lottie,
+                //   repeat: false,
+                //   fit: BoxFit.fill,
+                // ),
               ),
 
               //! indicator
 
               OnboardingProgressIndicator(
                 pageIndex: pageIndex,
-                duration: 5000,
+                duration: 10000,
               ),
 
               //! texts
@@ -113,6 +116,7 @@ class _OnboardingView1State extends State<OnboardingView1> {
                           ),
                         ),
                         AnimatedButton(
+                          loadingWidth: 65.w,
                           onTap: () async {
                             switch (pageIndex.value) {
                               case 0:
@@ -168,10 +172,18 @@ class _OnboardingView1State extends State<OnboardingView1> {
                                 break;
 
                               default:
+                                fadeTo(context, const SignUpView());
                             }
                           },
-                          content: const Text(''),
-                          isLoading: true,
+                          content: Text(
+                            'GET STARTED',
+                            style: TextStyle(
+                              color: const Color(0xFF006838),
+                              fontSize: 12.sp,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          isLoading: pageIndex.value != 4,
                         )
                       ],
                     ),
