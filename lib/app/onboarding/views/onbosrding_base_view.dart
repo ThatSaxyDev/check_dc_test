@@ -9,7 +9,6 @@ import 'package:check_dc/palette/palette.dart';
 import 'package:check_dc/widgets/buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:lottie/lottie.dart';
 
 class OnboardingBaseView extends StatefulWidget {
   const OnboardingBaseView({super.key});
@@ -93,26 +92,33 @@ class _OnboardingBaseViewState extends State<OnboardingBaseView> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        SizedBox(
-                          width: 42.w,
-                          height: 34.h,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Skip',
-                                style: TextStyle(
-                                  color: darkGreen,
-                                  fontSize: 18.sp,
-                                  fontWeight: FontWeight.w300,
+                        InkWell(
+                          highlightColor: Colors.transparent,
+                          splashColor: Colors.transparent,
+                          onTap: () {
+                            fadeTo(context, const SignUpView());
+                          },
+                          child: SizedBox(
+                            width: 42.w,
+                            height: 34.h,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Skip',
+                                  style: TextStyle(
+                                    color: darkGreen,
+                                    fontSize: 18.sp,
+                                    fontWeight: FontWeight.w300,
+                                  ),
                                 ),
-                              ),
-                              Container(
-                                height: 5.h,
-                                width: 42.w,
-                                color: darkGreen,
-                              )
-                            ],
+                                Container(
+                                  height: 5.h,
+                                  width: 42.w,
+                                  color: darkGreen,
+                                )
+                              ],
+                            ),
                           ),
                         ),
                         AnimatedButton(

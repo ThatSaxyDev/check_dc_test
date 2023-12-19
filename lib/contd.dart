@@ -99,3 +99,8 @@ extension WidgetExtensions on num {
 extension LottiePath on String {
   String get lottie => 'lib/assets/lottie/$this.json';
 }
+
+extension VectorPath on String {
+  String get svg => 'lib/assets/svg/$this.svg';
+  String get png => 'lib/assets/png/$this.png';
+}

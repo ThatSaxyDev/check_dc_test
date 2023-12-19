@@ -1,4 +1,5 @@
-import 'package:check_dc/app/onboarding/views/onbosrding_base_view.dart';
+import 'package:check_dc/app/splash/views/splash_view.dart';
+import 'package:check_dc/palette/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -21,10 +22,10 @@ class MyApp extends StatelessWidget {
             title: 'Check DC',
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
-              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+              colorScheme: ColorScheme.fromSeed(seedColor: green),
               useMaterial3: true,
             ),
-            home: const OnboardingBaseView(),
+            home: const SplashView(),
           );
         });
   }
